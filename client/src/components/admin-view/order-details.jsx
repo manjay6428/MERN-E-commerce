@@ -5,13 +5,12 @@ import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 import { Badge } from "../ui/badge";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllOrdersForAdmin,
-  getOrderDetailsForAdmin,
-  updateOrderStatus,
-} from "@/store/admin/order-slice";
-import { useToast } from "../ui/use-toast";
-
+// import {
+//   getAllOrdersForAdmin,
+//   getOrderDetailsForAdmin,
+//   updateOrderStatus,
+// } from "@/store/admin/order-slice";
+import { toast } from "sonner";
 const initialFormData = {
   status: "",
 };
@@ -20,27 +19,24 @@ function AdminOrderDetailsView({ orderDetails }) {
   const [formData, setFormData] = useState(initialFormData);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const { toast } = useToast();
 
   console.log(orderDetails, "orderDetailsorderDetails");
 
-  function handleUpdateStatus(event) {
-    event.preventDefault();
-    const { status } = formData;
+  // function handleUpdateStatus(event) {
+  //   event.preventDefault();
+  //   const { status } = formData;
 
-    dispatch(
-      updateOrderStatus({ id: orderDetails?._id, orderStatus: status })
-    ).then((data) => {
-      if (data?.payload?.success) {
-        dispatch(getOrderDetailsForAdmin(orderDetails?._id));
-        dispatch(getAllOrdersForAdmin());
-        setFormData(initialFormData);
-        toast({
-          title: data?.payload?.message,
-        });
-      }
-    });
-  }
+  //   dispatch(
+  //     updateOrderStatus({ id: orderDetails?._id, orderStatus: status })
+  //   ).then((data) => {
+  //     if (data?.payload?.success) {
+  //       dispatch(getOrderDetailsForAdmin(orderDetails?._id));
+  //       dispatch(getAllOrdersForAdmin());
+  //       setFormData(initialFormData);
+  //       toast(data?.payload?.message);
+  //     }
+  //   });
+  // }
 
   return (
     <DialogContent className="sm:max-w-[600px]">
@@ -136,7 +132,10 @@ function AdminOrderDetailsView({ orderDetails }) {
             formData={formData}
             setFormData={setFormData}
             buttonText={"Update Order Status"}
-            onSubmit={handleUpdateStatus}
+            onSubmit={
+              // handleUpdateStatus
+              {}
+            }
           />
         </div>
       </div>
