@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const app = express();
+require("dotenv").config();
 
 const authRouter = require("../server/routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
@@ -13,7 +14,7 @@ const shopAddressRouter = require("./routes/shop/address-routes");
 const shopOrderRouter = require("./routes/shop/order-routes");
 
 mongoose
-  .connect("mongodb+srv://manjay6428:manjay6428@cluster0.t3p4u.mongodb.net/")
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB connected successfully");
   })
@@ -24,7 +25,7 @@ const PORT = process.env.PORT || 5002;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
