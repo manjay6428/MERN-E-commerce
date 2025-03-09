@@ -12,7 +12,7 @@ export const registerUser = createAsyncThunk(
   "/auth/register",
   async (formData) => {
     const response = await axios.post(
-      "http://localhost:5002/api/auth/register",
+      "https://mern-e-commerce-lq4a.onrender.com/api/auth/register",
       formData,
       {
         withCredentials: true,
@@ -24,7 +24,7 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk("/auth/login", async (formData) => {
   const response = await axios.post(
-    "http://localhost:5002/api/auth/login",
+    "https://mern-e-commerce-lq4a.onrender.com/api/auth/login",
     formData,
     {
       withCredentials: true,
@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk("/auth/login", async (formData) => {
 });
 export const logoutUser = createAsyncThunk("/auth/logout", async () => {
   const response = await axios.post(
-    "http://localhost:5002/api/auth/logout",
+    "https://mern-e-commerce-lq4a.onrender.com/api/auth/logout",
     {},
     {
       withCredentials: true,
@@ -45,7 +45,7 @@ export const logoutUser = createAsyncThunk("/auth/logout", async () => {
 
 export const checkAuth = createAsyncThunk("/auth/checkAuth", async (token) => {
   const response = await axios.get(
-    "http://localhost:5002/api/auth/check-auth",
+    "https://mern-e-commerce-lq4a.onrender.com/api/auth/check-auth",
 
     {
       headers: {

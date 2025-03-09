@@ -10,7 +10,7 @@ export const addNewAddress = createAsyncThunk(
   "/addresses/addNewAddress",
   async (formData) => {
     const response = await axios.post(
-      `http://localhost:5002/api/shop/address/add`,
+      `https://mern-e-commerce-lq4a.onrender.com/api/shop/address/add`,
       formData
     );
 
@@ -21,7 +21,7 @@ export const fetchAllAddresses = createAsyncThunk(
   "/addresses/fetchAllAddress",
   async (userId) => {
     const response = await axios.get(
-      `http://localhost:5002/api/shop/address/get/${userId}`
+      `https://mern-e-commerce-lq4a.onrender.com/api/shop/address/get/${userId}`
     );
 
     return response?.data;
@@ -31,7 +31,7 @@ export const editaAddress = createAsyncThunk(
   "/addresses/editaAddress",
   async ({ userId, addressId, formData }) => {
     const response = await axios.put(
-      `http://localhost:5002/api/shop/address/update/${userId}/${addressId}`,
+      `https://mern-e-commerce-lq4a.onrender.com/api/shop/address/update/${userId}/${addressId}`,
       formData
     );
 
@@ -42,7 +42,7 @@ export const deleteAddress = createAsyncThunk(
   "/addresses/deleteAddress",
   async ({ userId, addressId }) => {
     const response = await axios.delete(
-      `http://localhost:5002/api/shop/address/delete/${userId}/${addressId}`
+      `https://mern-e-commerce-lq4a.onrender.com/api/shop/address/delete/${userId}/${addressId}`
     );
 
     return response?.data;
