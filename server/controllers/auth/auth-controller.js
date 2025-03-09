@@ -47,9 +47,13 @@ const loginUser = async (req, res) => {
       "CLIENT_SECRET_KEY",
       { expiresIn: "60m" }
     );
+    // res
+    //   .cookie("token", token, { httpOnly: true, secure: true })
+    //   .json({ success: true, message: "Logged in successful", user });
+
     res
-      .cookie("token", token, { httpOnly: true, secure: false })
-      .json({ success: true, message: "Logged in successful", user });
+      .status(200)
+      .json({ success: true, message: "Logged in Successfully", token, user });
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, message: "Some error occured" });
@@ -66,7 +70,8 @@ const logoutUser = async (req, res) => {
 //auth-middleware
 
 const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token;
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
   if (!token)
     return res
       .status(401)

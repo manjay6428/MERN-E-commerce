@@ -14,7 +14,7 @@ export const fetchAllFilteredProducts = createAsyncThunk(
       sortBy: sortParams,
     });
     const response = await axios.get(
-      `http://localhost:5002/api/shop/products/get?${query}`
+      `https://mern-e-commerce-lq4a.onrender.com/api/shop/products/get?${query}`
     );
 
     return response?.data;
@@ -24,7 +24,7 @@ export const fetchProductDetails = createAsyncThunk(
   "/products/fetchProductDetails",
   async ({ id }) => {
     const response = await axios.get(
-      `http://localhost:5002/api/shop/products/get/${id}`
+      `https://mern-e-commerce-lq4a.onrender.com/api/shop/products/get/${id}`
     );
 
     return response?.data;
