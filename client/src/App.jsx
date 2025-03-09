@@ -75,6 +75,8 @@ function App() {
           <Route path="checkout" element={<ShoppingCheckout />} />
           <Route path="account" element={<ShoppingAccount />} />
         </Route>
+         <Route path="/" element={<Navigate to="/auth/login" />} />
+        <Route path="/auth/login" element={<Login />} />
         <Route path="/unauth-page" element={<UnauthPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
