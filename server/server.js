@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 5002;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://mern-e-commerce-1-9nqg.onrender.com/",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: [
       "Content-Type",
